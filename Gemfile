@@ -25,5 +25,7 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'haml-rails', '~> 0.9'
+  gem 'guard'
+  gem 'guard-livereload', require: false
 end
 
