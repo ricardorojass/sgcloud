@@ -27,5 +27,6 @@ group :development, :test do
   gem 'spring'
   gem 'guard'
   gem 'guard-livereload', require: false
+  gem 'pry',             '0.10.1'
 end
 
