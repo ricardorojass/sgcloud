@@ -4,18 +4,22 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by_email(params[:email])
-    if user && user.authenticate(params[:password])
-      sign_in user
-      session[:user_id] = user.id
-      redirect_to root_url, notice: 'Bienvenido a SG Cloud!'
+    user = User.find_by_email(params[:session][:email].downcase)
+    if user && user.authenticate(params[:session][:password])
+      log_in user
+      params[:session][:remember_me] = '1' ? remember(user) : forget(user)
+      remember user
+      flash[:success] = "Bienvenido de nuevo #{user.email} !"
+      redirect_to user
     else
-      render :new
+      flash.now[:danger] = "Upss ! tú email/password es invalido."
+      render 'new'
     end
   end
 
   def destroy
-    session[:user_id] = nil
-    redirect_to root_url, notice: 'Te extrañaremos!'
+    log_out if logged_in?
+    flash[:info] = "Te extrañaremos!!."
+    redirect_to root_url
   end
 end
