@@ -1,9 +1,9 @@
-<% provide(:title, 'Crear cuenta') %>
+<% provide(:title, 'Editar perfil') %>
 <div class="container login">
 
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
-      <h1>Crear usuario</h1>
+      <h1>Editar Perfil</h1>
     </div>
   </div>
   <div class="row">
@@ -31,8 +31,14 @@
           <%= f.password_field :password, class: 'form-control' %>
         </div>
 
-        <%= f.submit "Ingresar", class: "btn btn-primary btn-lg btn-block" %>
+        <%= f.submit "Actualizar Perfil", class: "btn btn-primary btn-lg" %>
+        <%=  link_to "Cancelar", root_path, class: "btn btn-default btn-lg" %>
       <% end %>
+
+      <div class="gravatar_edit">
+        <%= gravatar_for @user %>
+        <a href="http://gravatar.com/emails" target="_blank">change</a>
+    </div>
     </div>
   </div>
 </div>
