@@ -1,6 +1,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+$grayLighter: #ccc;
+
 /* Universal */
 
 body {
@@ -116,3 +118,18 @@ aside {
 .gravatar_edit {
   margin-top: 15px;
 }
+
+/* users index */
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+   overflow: auto;
+   padding: 10px 0;
+   border-top: 1px solid $grayLighter;
+   &:last-child {
+     border-bottom: 1px solid $grayLighter;
+   }
+ }
+}
+

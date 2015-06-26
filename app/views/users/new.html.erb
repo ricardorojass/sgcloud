@@ -27,11 +27,16 @@
         </div>
 
         <div class="form-group">
+          <%= f.label :rol %>
+          <%= f.select :role, User.roles.to_a.map { |w,| [w.humanize, w] }, {prompt: "Seleciona un Rol"}, { class: 'form-control' } %>
+        </div>
+
+        <div class="form-group">
           <%= f.label :password %>
           <%= f.password_field :password, class: 'form-control' %>
         </div>
 
-        <%= f.submit "Ingresar", class: "btn btn-primary btn-lg btn-block" %>
+        <%= f.submit "Crear", class: "btn btn-primary btn-lg btn-block" %>
       <% end %>
     </div>
   </div>

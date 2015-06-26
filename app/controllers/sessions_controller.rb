@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       sign_in user
       flash[:success] = "Bienvenido de nuevo #{user.email} !"
-      redirect_to user
+      redirect_back_or user
     else
       flash.now[:danger] = "Upss ! tú email/password es invalido."
       render 'new'

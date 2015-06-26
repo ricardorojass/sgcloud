@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
+  enum role: %w(reader admin super_admin)
+
   private
 
     def create_remember_token
