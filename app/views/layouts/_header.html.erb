@@ -14,6 +14,7 @@
             <ul class="dropdown-menu">
               <li><%= link_to "Perfil", current_user %></li>
               <li><%= link_to "Editar Perfil", edit_user_path(current_user) %></li>
+              <li><%= link_to "Cambiar Contraseña", edit_password_reset_path(current_user) %></li>
               <li class="divider"></li>
               <li><%= link_to "Salir", signout_path, method: "delete" %></li>
             </ul>
