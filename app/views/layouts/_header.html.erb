@@ -5,6 +5,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Home", root_path %></li>
         <% if signed_in? %>
+          <li><%= link_to "Dashboard", dashboard_path %></li>
           <li><%= link_to "Usuarios", users_path %></li>
           <li><%= link_to "Crear Usuario", signup_path %></li>
           <li class="dropdown">
