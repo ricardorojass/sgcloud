@@ -1,0 +1,57 @@
+<%= form_for(@document) do |f| %>
+  <% if @document.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@document.errors.count, "error") %> prohibited this document from being saved:</h2>
+
+      <ul>
+      <% @document.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <%= f.label :code, "Codigo" %><br>
+        <%= f.text_field :code, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :version, "Version" %><br>
+        <%= f.number_field :version, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :title, "Titulo" %><br>
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :description, "Descripción" %><br>
+        <%= f.text_area(:description, size: '19x5', class: "form-control") %>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <%= f.label :origin, "Origen" %><br>
+        <%= f.text_field :origin, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :categories, "Categoria" %><br>
+        <%= f.text_field :categories, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :location, "Ubicación" %><br>
+        <%= f.text_field :location, class: "form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 col-md-offset-6">
+      <div class="actions text-right">
+        <%= link_to "Cancelar", documents_path, class: "btn btn-default" %>
+        <%= f.submit "Crear Documento", class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+<% end %>

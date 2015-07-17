@@ -89,6 +89,8 @@ GEM
       guard (~> 2.8)
       multi_json (~> 1.8)
     hitimes (1.2.2)
+    hstore_accessor (1.0.3)
+      activerecord (>= 4.0.0)
     http_parser.rb (0.6.0)
     i18n (0.7.0)
     jbuilder (2.2.16)
@@ -212,6 +214,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   guard
   guard-livereload
+  hstore_accessor
   jbuilder (~> 2.0)
   jquery-rails
   pg
