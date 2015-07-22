@@ -1,19 +1,53 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, @document.title) %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title">
+      <div class="row">
+        <div class="col-sm-11">
+          <h3><%= @document.title %></h3>
+        </div>
+        <div class="col-sm-1">
+          <h3><%= @document.version %></h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel-body">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Codigo</th>
+            <th>Version</th>
+            <th>Descripción</th>
+            <th>Origen</th>
+            <th>Categoria</th>
+            <th>Ubicación</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
 
-<p>
-  <strong>Code:</strong>
-  <%= @document.code %>
-</p>
+        <tbody>
+          <tr>
+            <td><%= @document.code %></td>
+            <td><%= @document.version %></td>
+            <td><%= @document.description %></td>
+            <td><%= @document.origin %></td>
+            <td><%= @document.categories %></td>
+            <td><%= @document.location %></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="actions">
+      <%= link_to 'Volver al Listado Maestro', documents_path, class: "btn btn-default" %>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Version:</strong>
-  <%= @document.version %>
-</p>
-
-<p>
-  <strong>Details:</strong>
-  <%= @document.details %>
-</p>
-
-<%= link_to 'Edit', edit_document_path(@document) %> |
-<%= link_to 'Back', documents_path %>
