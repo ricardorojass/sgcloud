@@ -26,7 +26,7 @@
       </div>
       <div class="form-group">
         <%= f.label :categories, "Categoria" %><br>
-        <%= f.select :categories, Document.categories.to_a.map { |c,| [c.humanize, c] }, {prompt: "Seleciona un origen"}, { class: 'form-control' } %>
+        <#%= f.collection_select('documents', 'categories', @categories, :last, :first)%>
       </div>
       <div class="form-group">
         <%= f.label :location, "Ubicación" %><br>
