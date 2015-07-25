@@ -11,11 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150724163226) do
+ActiveRecord::Schema.define(version: 20150724172739) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.string   "value"
+    t.integer  "cat_count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "documents", force: :cascade do |t|
     t.string   "code"
@@ -26,7 +34,10 @@ ActiveRecord::Schema.define(version: 20150724163226) do
     t.text     "description"
     t.string   "location"
     t.integer  "origin",      default: 0, null: false
+    t.integer  "category_id"
   end
+
+  add_index "documents", ["category_id"], name: "index_documents_on_category_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
@@ -44,4 +55,5 @@ ActiveRecord::Schema.define(version: 20150724163226) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["remember_digest"], name: "index_users_on_remember_digest", using: :btree
 
+  add_foreign_key "documents", "categories"
 end

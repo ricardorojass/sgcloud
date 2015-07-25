@@ -24,10 +24,12 @@
         <%= f.label :origin, "Origen" %><br>
         <%= f.select :origin, Document.origins.to_a.map { |o,| [o.humanize, o] }, {prompt: "Seleciona un origen"}, { class: 'form-control' } %>
       </div>
+      <%= f.fields_for :category do |c| %>
       <div class="form-group">
-        <%= f.label :categories, "Categoria" %><br>
-        <#%= f.collection_select('documents', 'categories', @categories, :last, :first)%>
+        <%= c.label :category, "Categoria" %><br>
+        <%= c.select :name, Category.all.map { |c| c.name }, {prompt: "Seleciona una categoria"}, { class: "form-control" }  %>
       </div>
+      <% end %>
       <div class="form-group">
         <%= f.label :location, "Ubicación" %><br>
         <%= f.text_field :location, class: "form-control" %>

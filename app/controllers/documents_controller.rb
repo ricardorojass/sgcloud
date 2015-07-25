@@ -15,6 +15,7 @@ class DocumentsController < ApplicationController
   # GET /documents/new
   def new
     @document = Document.new
+    @document.build_category
   end
 
   # GET /documents/1/edit
@@ -70,6 +71,7 @@ class DocumentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def document_params
       params.require(:document).permit(:code, :version, :origin, :title,
-                                       :description, :location, categories: [:name, :letter])
+                                       :description, :location, category_attributes:
+                                       [:name, :value, :cat_count])
     end
 end
