@@ -3,11 +3,13 @@
   <div class="panel-heading">
     <div class="panel-title">
       <div class="row">
-        <div class="col-sm-11">
+        <div class="col-sm-11 text-center">
           <h3><%= @document.title %></h3>
+          <span>Titulo</span>
         </div>
-        <div class="col-sm-1">
-          <h3></h3>
+        <div class="col-sm-1 text-center">
+          <h3><%= @document.current_version.number %></h3>
+          <span >Version</span>
         </div>
       </div>
     </div>
@@ -18,7 +20,6 @@
         <thead>
           <tr>
             <th>Codigo</th>
-            <!--<th>Version</th>-->
             <th>Descripción</th>
             <th>Origen</th>
             <th>Categoria</th>
@@ -34,6 +35,7 @@
             <td><%= @document.origin %></td>
             <td><%= @document.category.name %></td>
             <td><%= @document.location %></td>
+            <td><%= link_to "Descargar", @document.current_version.uploaded_file.url %></td>
             <td></td>
             <td></td>
           </tr>
