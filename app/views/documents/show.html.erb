@@ -7,7 +7,7 @@
           <h3><%= @document.title %></h3>
         </div>
         <div class="col-sm-1">
-          <h3><%= @document.version %></h3>
+          <h3></h3>
         </div>
       </div>
     </div>
@@ -18,7 +18,7 @@
         <thead>
           <tr>
             <th>Codigo</th>
-            <th>Version</th>
+            <!--<th>Version</th>-->
             <th>Descripción</th>
             <th>Origen</th>
             <th>Categoria</th>
@@ -30,7 +30,6 @@
         <tbody>
           <tr>
             <td><%= @document.code %></td>
-            <td><%= @document.version %></td>
             <td><%= @document.description %></td>
             <td><%= @document.origin %></td>
             <td><%= @document.category.name %></td>

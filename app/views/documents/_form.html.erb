@@ -1,14 +1,10 @@
-<%= form_for(@document) do |f| %>
+<%= form_for @document, :html => {:multipart => true} do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="row">
     <div class="col-sm-6">
       <div class="form-group">
         <%= f.label :code, "Codigo" %><br>
         <%= f.text_field :code, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.label :version, "Version" %><br>
-        <%= f.number_field :version, class: "form-control" %>
       </div>
       <div class="form-group">
         <%= f.label :title, "Titulo" %><br>
@@ -28,6 +24,12 @@
         <%= f.label :category_id, "Categoria" %><br>
         <%= f.collection_select(:category_id, Category.all, :id, :name, {prompt: "Selecciona una categoria"}, {class: "form-control"}) %>
       </div>
+      <%= f.fields_for :current_version, @document.current_version do |f_ver| %>
+        <div class="form-group">
+          <%= f_ver.label :uploaded_file, "Archivo" %><br>
+          <%= f_ver.file_field :uploaded_file, class: "form-control" %>
+        </div>
+      <% end %>
       <div class="form-group">
         <%= f.label :location, "Ubicación" %><br>
         <%= f.text_field :location, class: "form-control" %>

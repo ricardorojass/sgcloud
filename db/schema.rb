@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150724172739) do
+ActiveRecord::Schema.define(version: 20150730235742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,14 +27,14 @@ ActiveRecord::Schema.define(version: 20150724172739) do
 
   create_table "documents", force: :cascade do |t|
     t.string   "code"
-    t.integer  "version"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.string   "title"
     t.text     "description"
     t.string   "location"
-    t.integer  "origin",      default: 0, null: false
+    t.integer  "origin",             default: 0, null: false
     t.integer  "category_id"
+    t.integer  "current_version_id"
   end
 
   add_index "documents", ["category_id"], name: "index_documents_on_category_id", using: :btree
@@ -54,6 +54,19 @@ ActiveRecord::Schema.define(version: 20150724172739) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["remember_digest"], name: "index_users_on_remember_digest", using: :btree
+
+  create_table "versions", force: :cascade do |t|
+    t.string   "number"
+    t.integer  "document_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "uploaded_file_file_name"
+    t.string   "uploaded_file_content_type"
+    t.integer  "uploaded_file_file_size"
+    t.datetime "uploaded_file_updated_at"
+  end
+
+  add_index "versions", ["document_id"], name: "index_versions_on_document_id", using: :btree
 
   add_foreign_key "documents", "categories"
 end
